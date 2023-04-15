@@ -1,0 +1,12 @@
+Ex 6.1 :
+-If users choose "Cancel" : The ouput is "You've chosen: No"
+-To customize the options to users: we can use an Object array containing the options
+and pass it to the JOptionPane.showOptionDialog method like this :
+
+Object[] options = {"Yes", "No"}; // Or Object[] options = {"I do", "I don't"};
+int option = JOptionPane.showOptionDialog(null, 
+"Do you want to change to the first class ticket?", 
+"Select an option", JOptionPane.YES_NO_OPTION, 
+JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
+
