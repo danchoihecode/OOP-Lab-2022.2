@@ -33,6 +33,9 @@ public class NumberOfDay {
 		case "Apr.":
 		case "Apr":
 		case "4":
+		case "June":
+		case "Jun":
+		case "6":
 		case "September":
 		case "Sept.":
 		case "Sep":
