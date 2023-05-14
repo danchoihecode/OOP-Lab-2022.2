@@ -65,12 +65,25 @@ public class DigitalVideoDisc {
 		return cost;
 	}
 
+	public int getId() {
+		return id;
+	}
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
 	public String toString() {
 		return "DVD" + " - " + title + " - " + category + " - " + director + " - " + length + ": " + cost + " $";
+	}
+	
+	public boolean isMatch(String title) {
+		String[] words = title.toLowerCase().split("\\s+");
+		for (String word : words) {
+			if (this.title.toLowerCase().contains(word)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

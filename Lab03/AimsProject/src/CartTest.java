@@ -17,5 +17,9 @@ public class CartTest {
 		// Test the print method
 		anOrder.printCart();
 
+		// Test the search methods
+		anOrder.searchById(2);
+		anOrder.searchByTitle("The Lion");
+
 	}
 }
