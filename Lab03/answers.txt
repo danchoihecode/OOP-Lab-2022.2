@@ -1,0 +1,19 @@
+Section 2:
+I prefer using the method addDigitalVideoDisc(DigitalVideoDisc... dvdList) because it is
+more convenient : We can add some dvds without having to create any array,just have to list
+the dvds.Also, if there are many dvds, we can also pass a DigitalVideoDisc array to this method,
+which is the same with method addDigitalVideoDisc(DigitalVideoDisc [] dvdList).
+Section 3:
+- After the call of swap(jungleDVD, cinderellaDVD),in fact ,the program copy the references 
+to the dvds to another 2 variables: jungleDVD' and cinderellaDVD', and this method only 
+swaps these 2 variables, jungleDVD' and cinderellaDVD'.Therefore this swap does not effect
+the origin references in the main method, so jungleDVD still points to "Jungle" DVD and
+cinderellaDVD still points to "Cinderella" DVD.
+- After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()), the program copy the 
+reference to the "Jungle" DVD, jungleDVD ,to another variable,jungleDVD'.This jungleDVD' also
+points to the "Jungle" DVD, so it can change the title of the DVD by using method setTitle().
+Section 7:
+The return type of this method should be String because the class DigitalVideoDisc is inherited
+from the class Object, which has the method toString() with return type String, so the
+method toString() of DigitalVideoDisc class override this method.
+
