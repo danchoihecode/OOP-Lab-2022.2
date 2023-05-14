@@ -7,7 +7,7 @@ public class DigitalVideoDisc {
 	private float cost;
 	private int id;
 	private static int nbDigitalVideoDiscs = 0;
-	
+
 	public DigitalVideoDisc(String title) {
 
 		this.title = title;
@@ -67,6 +67,10 @@ public class DigitalVideoDisc {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String toString() {
+		return "DVD" + " - " + title + " - " + category + " - " + director + " - " + length + ": " + cost + " $";
 	}
 
 }
