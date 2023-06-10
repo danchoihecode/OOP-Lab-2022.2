@@ -2,3 +2,6 @@ Ex9:
 -The CompactDisc class aggregate the Track objects.
 -The Cart class aggregate the Media objects.
 -The Store class aggregate the Media objects.
+Ex10:
+If the passing object is not an instance of Media, the current object and the passing object 
+are not same class, so they don't equal.

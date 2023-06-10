@@ -52,4 +52,14 @@ public abstract class Media {
 		return false;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Media) {
+			Media media = (Media) obj;
+			return this.title == null ? media.title == null : this.title.equals(media.title);
+		} else
+			return false;
+
+	}
+
 }

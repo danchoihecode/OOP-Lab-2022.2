@@ -20,10 +20,20 @@ public class Track implements Playable {
 	}
 
 	@Override
-	
+
 	public void play() {
 		System.out.println("Playing track: " + this.getTitle());
 		System.out.println("Track length: " + this.getLength());
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Track) {
+			Track media = (Track) obj;
+			return this.title == null ? media.title == null && this.length == media.length
+					: this.title.equals(media.title) && this.length == media.length;
+		} else
+			return false;
 	}
 
 }
