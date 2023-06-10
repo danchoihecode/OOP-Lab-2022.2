@@ -1,0 +1,4 @@
+Ex9:
+-The CompactDisc class aggregate the Track objects.
+-The Cart class aggregate the Media objects.
+-The Store class aggregate the Media objects.
