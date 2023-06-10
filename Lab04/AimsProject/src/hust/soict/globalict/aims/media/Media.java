@@ -16,6 +16,12 @@ public abstract class Media {
 		this.id = nbOfItem;
 	}
 
+	public Media(String title) {
+		nbOfItem++;
+		this.title = title;
+		this.id = nbOfItem;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -30,6 +36,10 @@ public abstract class Media {
 
 	public float getCost() {
 		return cost;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public boolean isMatch(String title) {

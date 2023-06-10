@@ -13,6 +13,10 @@ public class Disc extends Media {
 
 	}
 
+	public Disc(String title) {
+		super(title);
+	}
+
 	public int getLength() {
 		return length;
 	}

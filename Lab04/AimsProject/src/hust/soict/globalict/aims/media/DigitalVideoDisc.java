@@ -7,6 +7,10 @@ public class DigitalVideoDisc extends Disc implements Playable {
 		super(title, category, cost, length, director);
 
 	}
+	
+	public DigitalVideoDisc(String title) {
+		super(title);
+	}
 
 	@Override
 	
