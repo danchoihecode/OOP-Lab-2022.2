@@ -29,4 +29,24 @@ public class Store {
 		}
 	}
 
+	public Media findByTitle(String title) {
+		for (Media m : itemsInStore) {
+			
+			if (m.getTitle().equals(title)) {
+				return m;
+			}
+		}
+		System.out.println("Can not find the media with your title !");
+		return null;
+	}
+
+	public void printStore() {
+		System.out.println("*********************************STORE*********************************");
+		System.out.println("Items in store:");
+		for (int i = 0; i < itemsInStore.size(); i++) {
+			System.out.println((i + 1) + ". " + itemsInStore.get(i).toString());
+		}
+		System.out.println("**********************************************************************");
+	}
+
 }

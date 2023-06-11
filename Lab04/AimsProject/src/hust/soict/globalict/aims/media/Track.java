@@ -22,8 +22,12 @@ public class Track implements Playable {
 	@Override
 
 	public void play() {
-		System.out.println("Playing track: " + this.getTitle());
-		System.out.println("Track length: " + this.getLength());
+		if (this.getLength() <= 0) {
+			System.out.println("The track " + this.getTitle() + " can not be played !");
+		} else {
+			System.out.println("Playing track: " + this.getTitle());
+			System.out.println("Track length: " + this.getLength());
+		}
 	}
 
 	@Override
@@ -34,6 +38,11 @@ public class Track implements Playable {
 					: this.title.equals(media.title) && this.length == media.length;
 		} else
 			return false;
+	}
+	
+	@Override
+	public String toString() {
+		return "Track - " + getTitle() + " - " + getLength();
 	}
 
 }

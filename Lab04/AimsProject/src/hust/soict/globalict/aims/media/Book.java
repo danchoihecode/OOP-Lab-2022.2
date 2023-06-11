@@ -34,4 +34,13 @@ public class Book extends Media {
 
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder str = new StringBuilder();
+		for (String author : authors) {
+			str.append(author).append(" - ");
+		}
+		return "Book - " + getTitle() + " - " + getCategory() + " - " + str.toString() + ": " + getCost() + " $";
+	}
+
 }

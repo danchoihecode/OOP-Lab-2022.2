@@ -25,10 +25,4 @@ public class Disc extends Media {
 		return director;
 	}
 
-	@Override
-	public String toString() {
-		return getTitle() + " - " + getCategory() + " - " + getDirector() + " - " + getLength() + ": " + getCost()
-				+ " $";
-	}
-
 }

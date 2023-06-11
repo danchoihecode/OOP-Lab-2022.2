@@ -5,3 +5,110 @@ Ex9:
 Ex10:
 If the passing object is not an instance of Media, the current object and the passing object 
 are not same class, so they don't equal.
+Ex11:
+- For each type of media, we have implemented a toString() method that prints out the
+information of the object. When calling this method, depending on the type of object, corresponding
+toString() will be performed.
+This is because the when the object of each type is created, the toString() method of each type has
+overridden the method toString() of the Object class (which is inherited in the Media class), 
+so despite we have used the reference variables of Media class, the toString() methods 's behaviors are different for each type.
+- Beside that, although we have initialized the length of the CD to 20, the output length is 0.
+This is because both the Disc class and the CompactDisc class have the getLength() 
+method, so when the CompactDisc object is created, the getLength() method of this class
+has overridden the method getLength() of its superclass.So the toString() method in the
+CompactDisc class calls its own getLength() method, which then return 0 because we don't 
+add any track to the CD.
+Ex12:
+-The class that should implement the Comparable interface is the class whose objects you want to compare and sort.
+So the Media class should implements the Comparable interface and override the compareTo() method
+, so Java can know how to sort the Media objects using this method.
+- For example , sort by title, then cost (similar for cost, then title):
+@Override
+    public int compareTo(Media other) {
+        int titleComparison = this.title.compareTo(other.title);
+        if (titleComparison != 0) {
+          
+            return titleComparison;
+        } else {
+      
+            return Float.compare(other.cost, this.cost);
+        }
+    }
+-With the Comparable interface approach, you can only have one ordering rule for the items. 
+The compareTo() method defines the default natural ordering for the objects. 
+If you want to have two different ordering rules (by title then cost and by cost then title), 
+you would need to use the Comparator interface and define separate Comparator implementations for each ordering rule.
+-To accommodate the different ordering rule for DVDs, 
+we can create a separate Comparator implementation specifically for DVDs :
+public class DvdComparator implements Comparator<DigitalVideoDisc> {
+    @Override
+    public int compare(DigitalVideoDisc dvd1,DigitalVideoDisc dvd2) {
+        int titleComparison = dvd1.getTitle().compareTo(dvd2.getTitle());
+        if (titleComparison != 0) {
+            return titleComparison;
+        } else {
+            int lengthComparison = Integer.compare(dvd2.getLength(), dvd1.getLength());
+            if (lengthComparison != 0) {
+                return lengthComparison;
+            } else {
+                return Float.compare(dvd2.getCost(), dvd1.getCost());
+            }
+        }
+    }
+}
+Implement Comparable<Media> to sort all other types of Media, for example, by title, then cost
+public class Media implements Comparable<Media> {
+    // code ...
+
+    @Override
+    public int compareTo(Media other) {
+        int titleComparison = this.title.compareTo(other.title);
+        if (titleComparison != 0) {
+            return titleComparison;
+        } else {
+            return Float.compare(other.cost, this.cost);
+        }
+    }
+}
+When sorting a list of Media objects that can include Books, CDs, and DVDs, 
+use separate sorting approaches for DVDs and other media types, for example:
+
+
+    public static void main(String[] args) {
+        List<Media> mediaList = new ArrayList<>();
+        // ... add books, CDs, and DVDs to the mediaList ...
+
+        // Sort DVDs using DvdComparator
+        List<DigitalVideoDisc> dvdList = new ArrayList<>();
+        for (Media media : mediaList) {
+            if (media instanceof DigitalVideoDisc) {
+                dvdList.add((DigitalVideoDisc) media);
+            }
+        }
+        Collections.sort(dvdList, new DvdComparator());
+
+        // Sort other media types (Books and CDs) using natural ordering
+        List<Media> otherMediaList = new ArrayList<>();
+        for (Media media : mediaList) {
+            if (!(media instanceof DigitalVideoDisc)) {
+                otherMediaList.add(media);
+            }
+        }
+        Collections.sort(otherMediaList);
+
+        // Combine the sorted lists
+        mediaList.clear();
+        mediaList.addAll(otherMediaList);
+        mediaList.addAll(dvdList);
+
+        // Print the sorted mediaList
+        for (Media media : mediaList) {
+            System.out.println(media.getTitle() + " - " + media.getCost());
+        }
+    }
+
+
+
+
+
+
